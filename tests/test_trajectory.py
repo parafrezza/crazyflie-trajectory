@@ -6,10 +6,11 @@ from crazytrajectory.trajectory import CrazyTrajectory
 
 
 class TestCrazyTrajectory(unittest.TestCase):
+    def __init__(self):
+        self.trajectory = CrazyTrajectory()
 
     def setUp(self):
         self.context = context = zmq.Context()
-        self.trajectory = CrazyTrajectory()
         self.mock_camera = context.socket(zmq.PUSH)
         self.mock_controller = context.socket(zmq.PULL)
         self.mock_camera.bind('tcp://127.0.0.1:7777')
